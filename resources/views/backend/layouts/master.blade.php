@@ -4,8 +4,8 @@
     {{-- left sidebar included --}}
     @include('backend.layouts.head')
 
-    <body>
-        
+    <body class="theme-red">
+         
         {{-- page loader included --}}
         @include('backend.layouts.loader')
         

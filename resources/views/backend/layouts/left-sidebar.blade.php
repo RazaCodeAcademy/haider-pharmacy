@@ -1,3 +1,8 @@
+@php
+    $title = app()->view->getSections()['title'];
+    $sub_title = app()->view->getSections()['sub_title'] ?? '';
+  @endphp
+
 <section>
     <!-- Left Sidebar -->
     <aside id="leftsidebar" class="sidebar">
@@ -28,7 +33,7 @@
         <div class="menu">
             <ul class="list">
                 <li class="active">
-                    <a href="index.html">
+                    <a href="{{ route('admin.dashboard') }}">
                         <i class="material-icons">dashboard</i>
                         <span>Dashboard</span>
                     </a>
@@ -47,16 +52,16 @@
                     </a>
                 </li>
                 <li>
-                    <a href="javascript:void(0);" class="menu-toggle">
+                    <a href="javascript:void(0);" class="menu-toggle {{ $title == 'Categories' ? 'toggled' : '' }}">
                         <i class="material-icons">list</i>
                         <span>Categories</span>
                     </a>
                     <ul class="ml-menu">
-                        <li>
-                            <a href="pages/ui/alerts.html">Add New</a>
+                        <li class="{{ $sub_title == 'create' ? 'active' : '' }}">
+                            <a href="{{ route('categories.createCategory') }}">Add New</a>
                         </li>
-                        <li>
-                            <a href="pages/ui/animations.html">Categories List</a>
+                        <li class="{{ $sub_title == 'all-categories' ? 'active' : '' }}">
+                            <a href="{{ route('categories.getAllCategories') }}">Categories List</a>
                         </li>
                     </ul>
                 </li>

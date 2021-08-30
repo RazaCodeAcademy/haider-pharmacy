@@ -25,6 +25,13 @@ Route::get('/', function () {
 
     Route::prefix('admin')->namespace('Backend')->group(function () {
         Route::get('/dashboard', 'DashboardController@index')->name('admin.dashboard');
+
+        // categories routes
+        Route::prefix('categories')->group(function () {
+            Route::get('/', 'CategoryController@getAllCategories')->name('categories.getAllCategories');
+            Route::get('/create', 'CategoryController@createCategory')->name('categories.createCategory');
+            Route::post('/save_category', 'CategoryController@saveCategory')->name('categories.saveCategory');
+        });
     });
 
 /*-----------------------------------END---------------------------------*/
